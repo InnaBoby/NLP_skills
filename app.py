@@ -1,24 +1,6 @@
 import streamlit as st
-import torch
 from PIL import Image
 import pandas as pd
-from gensim.models import Word2Vec
-
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-
-DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-tokenizer = AutoTokenizer.from_pretrained('ai-forever/ruBert-base')
-#декоратор для загрузки модели в кэш
-@st.cache_resource
-def load_model():
-    model = AutoModelForSequenceClassification.from_pretrained('ai-forever/ruBert-base')
-    model.load_state_dict(torch.load('weights_ruBERT', map_location=torch.device(DEVICE)))
-    if torch.cuda.is_available():
-        model.cuda()
-    return model
-
-#model = load_model()
 
 #Загрузка данных
 df=pd.read_json('restaurants_reviews.jsonl', lines=True)
@@ -59,13 +41,9 @@ elif add_selectbox == 'Data Preprocessing':
 
 elif add_selectbox == "Chat-bot":
     st.text('Раздел в разработке')
-    #prompt = st.chat_input("Введите вопрос")
-    #if prompt:
-    #    st.write(prompt)
+   
 
 elif add_selectbox == "Classification":
     st.text('Раздел в разработке')
-    #input_text=st.text_area('Введите отзыв:', 'Текст отзыва...')
-    #model_w2v = Word2Vec.load("word2v.model")
-
+  
 
