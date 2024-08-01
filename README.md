@@ -9,9 +9,13 @@ _NLP skills presentation_
 *Файлы:
 -app.py -приложение на Streamlit (https://nlp-skills-presentation.streamlit.app/)
 
+-Chat_Bot_Func.py - функция для генерации ответа чат-бота с использованием MistralAPI
+
 -restaurants_reviews.jsonl - исходный датасет
 
 -preproc_resturants.csv - датасет после предобработки
+
+-презентация.pdf - результаты обучения моделей классификации
 
 -word2v.model - обученная модель word2vec
 
