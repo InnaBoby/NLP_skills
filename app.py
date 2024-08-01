@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import pandas as pd
+from Chat_Bot_Func import *
 
 #Загрузка данных
 df=pd.read_json('restaurants_reviews.jsonl', lines=True)
@@ -40,10 +41,32 @@ elif add_selectbox == 'Data Preprocessing':
 
 
 elif add_selectbox == "Chat-bot":
-    st.text('Раздел в разработке')
-   
+    mistral_api_key=st.text_input('Введите MistralAPI key')
+
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    if prompt := st.chat_input("Введите вопрос"):
+        with st.chat_message("user"):
+            st.markdown(prompt)
+            st.session_state.messages.append({"role": "user", "content": prompt})
+
+        response = f"Bot: {mistral(mistral_api_key, prompt)}"
+
+
+        with st.chat_message("assistant"):
+            st.markdown(response)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+
+
 
 elif add_selectbox == "Classification":
     st.text('Раздел в разработке')
-  
+    #input_text=st.text_area('Введите отзыв:', 'Текст отзыва...')
+    #model_w2v = Word2Vec.load("word2v.model")
+
 
