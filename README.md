@@ -6,7 +6,8 @@ _NLP skills presentation_
 
 *модели классификации - 1) градиентный бустинг над эмбеддингами w2v с весами TF-IDF 2) fine-tuned ruBERT
 
-*Файлы:
+**Файлы:**
+
 -app.py -приложение на Streamlit (https://nlp-skills-presentation.streamlit.app/)
 
 -Chat_Bot_Func.py - функция для генерации ответа чат-бота с использованием MistralAPI
